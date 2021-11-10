@@ -34,6 +34,7 @@ def get_CMC_listings(start=1, limit=1000, convert='USD', api_key=None):
     session.headers.update(headers)
     response = session.get(url, params=parameters)
     data = json.loads(response.text)
+    session.close()
     return pd.DataFrame(data['data']).set_index('symbol')
 
 
